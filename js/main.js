@@ -35,15 +35,17 @@ function generateCells(difficulty) {
 
 function onCellClick() {
   const numCell = +this.dataset.numCell;
-  for (i = 0; i < bombs.length; i++) {
-    const hideBombs = document.querySelector(
-      `.gril-container :nth-child(${bombs[i]})`
-    );
-    hideBombs.classList.add("bg-danger");
-  }
+
   if (bombs.includes(numCell)) {
     this.classList.add("bg-danger");
+    for (i = 0; i < bombs.length; i++) {
+      const hideBombs = document.querySelector(
+        `.gril-container :nth-child(${bombs[i]})`
+      );
+      hideBombs.classList.add("bg-danger");
+    }
     alert(`HAI PRESO UNA BOMBA! Caselle sicure selezionate ${winIncre}`);
+    this.removeEventListener("click", onCellClick);
   } else {
     winIncre++;
     if (winIncre === maxCells - parseInt(difficulty)) {
