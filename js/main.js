@@ -45,8 +45,7 @@ function onCellClick() {
       hideBombs.classList.add("bg-danger");
     }
     alert(`HAI PRESO UNA BOMBA! Caselle sicure selezionate ${winIncre}`);
-    removeAddEventListener(difficulty);
-    console.log(difficulty);
+    removeAddEventListener2(difficulty);
   } else {
     winIncre++;
     if (winIncre === maxCells - parseInt(difficulty)) {
@@ -75,9 +74,12 @@ function generateBombsList(difficulty) {
   return bombsContainer;
 }
 
-function removeAddEventListener(difficulty) {
+function removeAddEventListener2(difficulty) {
   const deleteCounter = difficulty * difficulty;
-  for (i = 0; i < deleteCounter; i++) {
-    document.querySelector(".square").removeEventListener(onCellClick());
-  }
+  console.log(deleteCounter);
+
+  const pippo = document.querySelectorAll(".square");
+  pippo.forEach((square) => {
+    square.removeEventListener("click", onCellClick);
+  });
 }
