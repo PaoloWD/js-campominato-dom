@@ -45,7 +45,7 @@ function onCellClick() {
       hideBombs.classList.add("bg-danger");
     }
     alert(`HAI PRESO UNA BOMBA! Caselle sicure selezionate ${winIncre}`);
-    removeAddEventListener2(difficulty);
+    removeAddEventListener2();
   } else {
     winIncre++;
     if (winIncre === maxCells - parseInt(difficulty)) {
@@ -74,10 +74,7 @@ function generateBombsList(difficulty) {
   return bombsContainer;
 }
 
-function removeAddEventListener2(difficulty) {
-  const deleteCounter = difficulty * difficulty;
-  console.log(deleteCounter);
-
+function removeAddEventListener2() {
   const pippo = document.querySelectorAll(".square");
   pippo.forEach((square) => {
     square.removeEventListener("click", onCellClick);
